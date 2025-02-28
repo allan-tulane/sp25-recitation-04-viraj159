@@ -1,6 +1,6 @@
 # CMPS 2200  Recitation 04
 
-**Name (Team Member 1):**_________________________  
+**Name (Team Member 1):**Viraj Choksi
 **Name (Team Member 2):**_________________________
 
 
@@ -36,7 +36,9 @@ To use this function to count words, you'll need to implement your own `map_f` a
 
 4. Assume that a word `w` appears `n` times. What is the **work** and **span** of `word_count_reduce` for this word, assuming a parallel implementation of the `reduce` function?
 
-**Enter answer here**
+Work: Since reduce is summing up n ones for a word appearing n times, the total number of additions is n. Hence, the work is O(n).
+
+Span: Since reduce follows a divide-and-conquer approach, it reduces n elements by summing two halves recursively. This forms a binary reduction tree with height O(log n). Thus, the span is O(log n).
 
 
 5. Why are we going through all this trouble? Couldn't I just use this function to count words?
@@ -52,8 +54,7 @@ for doc in docs:
 
 What is the problem that prevents us from easily parallelizing this solution?
 
-**Enter answer here**
-
+The problem with the dictionary-based approach is that it requires shared mutable state (counts dictionary), which makes parallelization difficult due to race conditions, the need for locks, and limited scalability.
 
 ## Part 2: Sentiment analysis
 
